@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Neoclássica | Aquarela dos Poemas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#f4f1ea',
+                            DEFAULT: '#cba557', /* Gold/Bronze */
+                            dark: '#1a1a1a',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for an elegant touch */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cba557;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a88846;
+        }
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+        }
+        .img-zoom {
+            transition: transform 0.5s ease;
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.05);
+        }
+        
+        /* Reveal animation utility classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-brand-light antialiased">
+
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-2xl font-bold tracking-wider text-white" id="logo-text">RESIDÊNCIA ALTA PADRÃO</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#detalhes" class="text-white hover:text-brand transition px-3 py-2 text-sm font-medium">Detalhes</a>
+                    <a href="#galeria" class="text-white hover:text-brand transition px-3 py-2 text-sm font-medium">Galeria</a>
+                    <a href="#localizacao" class="text-white hover:text-brand transition px-3 py-2 text-sm font-medium">Localização</a>
+                </div>
+                <div>
+                    <a href="https://wa.me/5566996570196?text=Olá%20Fernando,%20tenho%20interesse%20na%20casa%20do%20Aquarela%20dos%20Poemas." target="_blank" 
+                       class="hidden md:inline-flex items-center justify-center px-6 py-2 border border-brand text-sm font-medium rounded-full text-brand bg-transparent hover:bg-brand hover:text-white transition-colors duration-300">
+                        <i class="fab fa-whatsapp mr-2 text-lg"></i> Fale com o Proprietário
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="fachada-casa.jpg" alt="Fachada Neoclássica da Casa" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <span class="block text-brand font-semibold tracking-[0.2em] uppercase text-sm mb-4 animate-fade-in-up" style="animation-delay: 0.1s;">Exclusividade à Venda</span>
+            <h1 class="text-5xl md:text-7xl font-serif text-white font-bold mb-6 leading-tight animate-fade-in-up shadow-sm" style="animation-delay: 0.3s;">
+                Elegância Neoclássica em Cada Detalhe
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-10 font-light animate-fade-in-up" style="animation-delay: 0.5s;">
+                Condomínio Aquarela dos Poemas • Sinop, MT
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.7s;">
+                <a href="#detalhes" class="bg-brand text-white px-8 py-3 rounded-full font-medium hover:bg-brand-dark transition duration-300">
+                    Conhecer a Casa
+                </a>
+                <a href="https://wa.me/5566996570196?text=Olá%20Fernando,%20tenho%20interesse%20na%20casa%20do%20Aquarela%20dos%20Poemas." target="_blank" class="bg-white text-gray-900 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition duration-300 flex items-center justify-center">
+                    <i class="fab fa-whatsapp text-green-500 mr-2"></i> Agendar Visita
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce-slow">
+            <a href="#highlights" class="text-white opacity-70 hover:opacity-100 transition">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </header>
+
+    <section id="highlights" class="py-16 bg-white relative z-20 -mt-10 rounded-t-[3rem] shadow-xl mx-4 lg:mx-12 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
+                <div class="p-4">
+                    <div class="text-brand mb-3 text-3xl"><i class="fa-solid fa-expand"></i></div>
+                    <h3 class="text-3xl font-serif font-bold text-gray-900">163,11</h3>
+                    <p class="text-sm text-gray-500 uppercase tracking-wider mt-1">m² Área Residencial</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-brand mb-3 text-3xl"><i class="fa-solid fa-water-ladder"></i></div>
+                    <h3 class="text-3xl font-serif font-bold text-gray-900">11,28</h3>
+                    <p class="text-sm text-gray-500 uppercase tracking-wider mt-1">m² Área Piscina</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-brand mb-3 text-3xl"><i class="fa-solid fa-bed"></i></div>
+                    <h3 class="text-3xl font-serif font-bold text-gray-900">3</h3>
+                    <p class="text-sm text-gray-500 uppercase tracking-wider mt-1">Suítes (2 c/ Closet)</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-brand mb-3 text-3xl"><i class="fa-solid fa-car"></i></div>
+                    <h3 class="text-3xl font-serif font-bold text-gray-900">2</h3>
+                    <p class="text-sm text-gray-500 uppercase tracking-wider mt-1">Vagas de Garagem</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="detalhes" class="py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand font-semibold tracking-widest uppercase text-sm">Características</span>
+                <h2 class="text-4xl font-serif text-gray-900 mt-2">Um Refúgio de Conforto e Sofisticação</h2>
+                <div class="w-24 h-1 bg-brand mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 group reveal">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-couch fa-bounce" style="--fa-animation-duration: 3s;"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Living Mobiliado</h3>
+                    <p class="text-gray-600 line-clamp-3">Ambiente integrado, finamente decorado e mobiliado, pronto para receber seus convidados com elegância e conforto.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 group reveal">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-utensils fa-beat-fade" style="--fa-animation-duration: 3s;"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Espaço Gourmet</h3>
+                    <p class="text-gray-600 line-clamp-3">Cozinha ilha integrada ao espaço gourmet, perfeita para momentos gastronômicos em família e com amigos.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 group reveal">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-tv fa-pulse" style="--fa-animation-duration: 3s;"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Sala de TV</h3>
+                    <p class="text-gray-600 line-clamp-3">Espaço dedicado e aconchegante para entretenimento, projetado para as melhores sessões de cinema em casa.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 group reveal">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-bed fa-fade" style="--fa-animation-duration: 3s;"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">3 Suítes Plenas</h3>
+                    <p class="text-gray-600 line-clamp-3">Três suítes espaçosas para garantir a privacidade de todos, sendo duas delas master com closet integrado.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 group reveal">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-swimmer fa-flip" style="--fa-animation-duration: 3s; --fa-animation-iteration-count: infinite;"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Área de Lazer</h3>
+                    <p class="text-gray-600 line-clamp-3">Piscina de 11,28m² com cascata e design moderno, acompanhada de um prático lavabo externo.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 group reveal">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-building fa-bounce" style="--fa-animation-duration: 3s;"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Estilo Neoclássico</h3>
+                    <p class="text-gray-600 line-clamp-3">Fachada imponente e atemporal que reflete bom gosto e valoriza o imóvel dentro do condomínio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div>
+                    <span class="text-brand font-semibold tracking-widest uppercase text-sm">Tour Visual</span>
+                    <h2 class="text-4xl font-serif text-gray-900 mt-2">Galeria de Imagens</h2>
+                </div>
+                <p class="text-gray-500 mt-4 md:mt-0 max-w-md text-right hidden md:block">
+                    Explore cada ambiente desta magnífica residência através de nossa curadoria de fotos.
+                </p>
+            </div>
+
+            <!-- Masonry-like Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[250px]">
+                
+                <!-- Living Room -->
+                <div class="group relative overflow-hidden rounded-xl lg:col-span-2 lg:row-span-2 shadow-md reveal">
+                    <img src="living.jpg" alt="Living Integrado" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white text-2xl font-serif font-bold">Living Principal</h4>
+                        <p class="text-gray-200">Ambiente amplo e iluminado</p>
+                    </div>
+                </div>
+
+                <!-- Gourmet/Cozinha -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md reveal">
+                    <img src="gourmet-cozinha.jpg" alt="Cozinha Gourmet" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-serif font-bold">Cozinha Ilha</h4>
+                        <p class="text-gray-200 text-sm">Design moderno e funcional</p>
+                    </div>
+                </div>
+
+                <!-- TV Room -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md reveal">
+                    <img src="living-tv.jpg" alt="Sala de TV" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-serif font-bold">Sala de TV</h4>
+                        <p class="text-gray-200 text-sm">Conforto em cada detalhe</p>
+                    </div>
+                </div>
+
+                <!-- Piscina Geral -->
+                <div class="group relative overflow-hidden rounded-xl lg:col-span-2 shadow-md reveal">
+                    <img src="piscina-geral.jpg" alt="Área da Piscina" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white text-2xl font-serif font-bold">Área Externa</h4>
+                        <p class="text-gray-200">Piscina e área de lazer</p>
+                    </div>
+                </div>
+
+                <!-- Piscina Cascata -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md reveal">
+                    <img src="piscina-cascata.jpg" alt="Cascata da Piscina" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-serif font-bold">Detalhe da Cascata</h4>
+                        <p class="text-gray-200 text-sm">Tranquilidade e sofisticação</p>
+                    </div>
+                </div>
+
+                <!-- Gourmet Detalhe -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md reveal">
+                    <img src="cozinha-ilha.jpg" alt="Detalhe Cozinha Ilha" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-serif font-bold">Acabamento Premium</h4>
+                        <p class="text-gray-200 text-sm">Materiais de alto padrão</p>
+                    </div>
+                </div>
+
+                <!-- Living Integrado -->
+                <div class="group relative overflow-hidden rounded-xl lg:col-span-2 shadow-md reveal">
+                    <img src="gourmet-living.jpg" alt="Integração Living e Gourmet" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white text-2xl font-serif font-bold">Ambientes Integrados</h4>
+                        <p class="text-gray-200">Perfeito para convívio</p>
+                    </div>
+                </div>
+
+                 <!-- Gourmet Geral -->
+                 <div class="group relative overflow-hidden rounded-xl shadow-md reveal">
+                    <img src="gourmetgeral.jpg" alt="Gourmet Visão Geral" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-serif font-bold">Espaço Gourmet</h4>
+                        <p class="text-gray-200 text-sm">Completo e equipado</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="localizacao" class="py-24 bg-brand-dark text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span class="text-brand font-semibold tracking-widest uppercase text-sm">Localização Privilegiada</span>
+                    <h2 class="text-4xl font-serif mt-2 mb-6">Condomínio Aquarela dos Poemas</h2>
+                    <p class="text-gray-300 mb-6 text-lg font-light leading-relaxed">
+                        Localizada na cidade de Sinop, Mato Grosso, esta residência encontra-se em um dos condomínios mais exclusivos e desejados da região. O Aquarela dos Poemas oferece infraestrutura completa de segurança e lazer para você e sua família.
+                    </p>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-brand mt-1 mr-3"></i>
+                            <span>Segurança 24 horas com controle de acesso rigoroso.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-brand mt-1 mr-3"></i>
+                            <span>Ruas arborizadas e planejamento urbano impecável.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-brand mt-1 mr-3"></i>
+                            <span>Áreas de convivência e lazer exclusivas para moradores.</span>
+                        </li>
+                    </ul>
+                    <div class="mt-10">
+                        <a href="https://maps.google.com/?q=Condomínio+Aquarela+dos+Poemas+Sinop" target="_blank" class="inline-flex items-center text-brand hover:text-white transition duration-300">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Ver no Google Maps
+                        </a>
+                    </div>
+                </div>
+                <div class="relative reveal">
+                    <div class="absolute inset-0 bg-brand rounded-2xl transform translate-x-4 translate-y-4"></div>
+                    <img src="mapa-condominio.jpg" alt="Mapa do Condomínio Aquarela dos Poemas" class="relative z-10 w-full h-auto rounded-2xl shadow-2xl border-4 border-white/10">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white text-center">
+        <div class="max-w-3xl mx-auto px-4 reveal">
+            <h2 class="text-4xl font-serif text-gray-900 font-bold mb-6">Interessado nesta Propriedade?</h2>
+            <p class="text-xl text-gray-600 mb-10 font-light">
+                Agende uma visita exclusiva e venha conhecer pessoalmente cada detalhe desta magnífica residência neoclássica.
+            </p>
+            
+            <div class="bg-brand-light p-8 rounded-3xl inline-block shadow-sm border border-brand/20">
+                <p class="text-sm uppercase tracking-wider text-gray-500 mb-2">Contato Direto com Proprietário</p>
+                <p class="text-2xl font-serif font-bold text-gray-900 mb-6">Fernando</p>
+                
+                <a href="https://wa.me/5566996570196?text=Olá%20Fernando,%20tenho%20interesse%20na%20casa%20do%20Aquarela%20dos%20Poemas.%20Gostaria%20de%20agendar%20uma%20visita." target="_blank" 
+                   class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full text-white bg-green-500 hover:bg-green-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <i class="fab fa-whatsapp text-2xl mr-3"></i> (66) 99657-0196
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <span class="font-serif text-xl font-bold text-white tracking-wider block mb-2">RESIDÊNCIA ALTA PADRÃO</span>
+                <p class="text-sm">Aquarela dos Poemas, Sinop - MT</p>
+            </div>
+            <div class="flex space-x-6">
+                 <a href="https://wa.me/5566996570196" target="_blank" class="text-gray-400 hover:text-green-500 transition">
+                    <span class="sr-only">WhatsApp</span>
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+                <!-- Adicionar outras redes se houver -->
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-sm text-center">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Portfólio Imobiliário. Venda Direta.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5566996570196?text=Olá%20Fernando,%20estou%20no%20site%20da%20casa%20e%20gostaria%20de%20mais%20informações." target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 hover:scale-110 transition-all duration-300 group">
+        <i class="fab fa-whatsapp text-3xl group-hover:animate-ping absolute opacity-20"></i>
+        <i class="fab fa-whatsapp text-3xl relative z-10"></i>
+    </a>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const logoText = document.getElementById('logo-text');
+            const links = navbar.querySelectorAll('a:not(.bg-transparent)');
+            const ctaBtn = navbar.querySelector('a.border-brand');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                logoText.classList.remove('text-white');
+                logoText.classList.add('text-gray-900');
+                
+                links.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-600');
+                });
+                
+                // Keep CTA styling consistent but visible on white bg
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                logoText.classList.add('text-white');
+                logoText.classList.remove('text-gray-900');
+                
+                links.forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-gray-600');
+                });
+            }
+        });
+
+        // Scroll reveal animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+</html>
